@@ -1,15 +1,17 @@
 package main
 
 import (
-	"net/http"
 	"fmt"
+	"net/http"
+	"time"
 )
 
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "Hello World")
+	fmt.Println("Get Query at", time.Now())
 }
 
 func main() {
 	http.HandleFunc("/", IndexHandler)
-	http.ListenAndServe("127.0.0.1:8000", nil)
+	http.ListenAndServe(":8888", nil)
 }
